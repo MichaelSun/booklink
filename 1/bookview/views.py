@@ -8,6 +8,18 @@ KEY_BOOK = 'booknames'
 KEY_COUNT = 'bookcounts'
 KEY_URL = 'bookurls'
 
+KEY_PAGE = 'pageNum'
+DEFAULT_PAGESIZE = 20
+
+def tryFecthGetRequestValue(request, key):
+    try:
+        if key != None and key in request.GET and request.GET[key]:
+            value = request.GET[key]
+            return (key, value)
+    except:
+        return None
+    return None
+
 def listbook(request):
     data = 'path : ' + request.path
     data = data + '\n' + 'host : ' + request.get_host()
